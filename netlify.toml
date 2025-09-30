@@ -1,0 +1,21 @@
+[build]
+  # Directory to serve from - since our HTML files are in root, we use "."
+  publish = "."
+  
+  # No build command needed for static HTML site
+  command = ""
+
+# Redirect rules for clean URLs (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Custom headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
